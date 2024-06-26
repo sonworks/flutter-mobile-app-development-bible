@@ -1,8 +1,10 @@
-# Chapter 2
+# Chapter 2 - 開発環境の構築
+
+macOS Sonoma 14.5 Intel Processor にて動作確認を実施
 
 ## Flutterインストール
 
-### インストール （macOS for Intel Processor）
+### インストール
 
 [Flutter公式HP](https://docs.flutter.dev/get-started/install)
 
@@ -44,7 +46,8 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 ### その他 (オプション)
 
- * Android Studio にて Flutterプラグインをインストールする
+ * Visual Stusio Code に Flutterプラグイン をインストールする
+ * Android Studio に Flutterプラグイン をインストールする
  * Androidエミュレーター、および、iOSシミュレーターを作成する
 
 
@@ -54,3 +57,23 @@ Doctor summary (to see all details, run flutter doctor -v):
 Found 2 connected devices:
 ...(省略)...
 ```
+
+## Flutterアプリケーション作成
+
+### 新規プロジェクトの作成　(Visual Studio Code)
+
+1. メニューの View > CommandPalette(⌘⇧P) から `Flutter: New Project` を選択する
+2. 任意のディレクトリを指定して、プロジェクトを生成する
+
+### Androidエミュレーターを起動
+
+1. メニューの View > CommandPalette(⌘⇧P) から `Flutter: Launch Emulator` を選択する
+2. 任意のエミュレーターを起動する、または新規作成する
+
+
+※ 「iOSシミュレーターの起動」方法は省略する
+
+### アプリ実行
+
+1. メニューの View > CommandPalette(⌘⇧P) から `Debug: Start Without Debugging` を選択する
+2. 上項にて起動しているエミュレーターにてアプリがビルドされる
