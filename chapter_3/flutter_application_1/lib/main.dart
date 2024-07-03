@@ -70,18 +70,26 @@ class MyApp extends StatelessWidget {
 //       );
 // }
 
-// 3.2.1.4 マテリアルデザインでレイアウトウィジェットをページに追加
+// // 3.2.1.4 マテリアルデザインでレイアウトウィジェットをページに追加
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         title: 'Flutter layout demo',
+//         home: Scaffold(
+//           appBar: AppBar(
+//             title: Text('Flutter layout demo'),
+//           ),
+//           body: Center(
+//             child: Text('Hello world'),
+//           ),
+//         ),
+//       );
+// }
+
+// 3.2.1.6 レイアウトウィジェットを追加（非マテリアルデザイン）
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter layout demo',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Flutter layout demo'),
-          ),
-          body: Center(
-            child: Text('Hello world'),
-          ),
-        ),
+  Widget build(BuildContext context) => Center(
+        child: Text('Hello World', textDirection: TextDirection.ltr),
       );
 }
