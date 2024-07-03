@@ -86,10 +86,28 @@ class MyApp extends StatelessWidget {
 //       );
 // }
 
-// 3.2.1.6 レイアウトウィジェットを追加（非マテリアルデザイン）
+// // 3.2.1.6 レイアウトウィジェットを追加（非マテリアルデザイン）
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => Center(
+//         child: Text('Hello World', textDirection: TextDirection.ltr),
+//       );
+// }
+
+// 3.2.1.8 MaterialAppのデザインに近づける
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Center(
-        child: Text('Hello World', textDirection: TextDirection.ltr),
+  Widget build(BuildContext context) => Container(
+        decoration: BoxDecoration(color: Colors.white),
+        child: Center(
+          child: Text(
+            'Hello World',
+            textDirection: TextDirection.ltr,
+            style: TextStyle(
+              fontSize: 32,
+              color: Colors.black87,
+            ),
+          ),
+        ),
       );
 }
