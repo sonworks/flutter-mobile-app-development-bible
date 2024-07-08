@@ -3,7 +3,6 @@ import 'package:flutter/material.dart'; // Flutterウィジェットが使用可
 // アプリが起動した時に、最初に動作する部分
 void main() => runApp(MyApp());
 
-/*
 // StatelessWidget Sample
 class MyApp extends StatelessWidget {
   @override
@@ -14,15 +13,11 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           body: Center(
-            child: Text(
-              'Flutter Demo Home Page',
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
+            child: _buildRowImages(),
           ),
         ),
       );
 }
-*/
 
 // // 3.1.3.5 StatefulWidget Sample
 // class MyApp extends StatefulWidget {
@@ -94,20 +89,30 @@ class MyApp extends StatelessWidget {
 //       );
 // }
 
-// 3.2.1.8 MaterialAppのデザインに近づける
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Center(
-          child: Text(
-            'Hello World',
-            textDirection: TextDirection.ltr,
-            style: TextStyle(
-              fontSize: 32,
-              color: Colors.black87,
-            ),
-          ),
-        ),
-      );
-}
+// // 3.2.1.8 MaterialAppのデザインに近づける
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => Container(
+//         decoration: BoxDecoration(color: Colors.white),
+//         child: Center(
+//           child: Text(
+//             'Hello World',
+//             textDirection: TextDirection.ltr,
+//             style: TextStyle(
+//               fontSize: 32,
+//               color: Colors.black87,
+//             ),
+//           ),
+//         ),
+//       );
+// }
+
+// 3.2.1.1.5 Row
+Widget _buildRowImages() => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Expanded(child: Image.asset('assets/images/image1.png'), flex: 1),
+        Expanded(child: Image.asset('assets/images/image2.png'), flex: 2),
+        Expanded(child: Image.asset('assets/images/image3.png'), flex: 1),
+      ],
+    );
