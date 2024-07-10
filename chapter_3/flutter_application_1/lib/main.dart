@@ -7,15 +7,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          body: Center(
-            child: _buildPackingSample1(),
-          ),
-        ),
+        title: 'Pavolva Demo',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: Pavolva(),
       );
 }
 
@@ -117,8 +111,11 @@ class MyApp extends StatelessWidget {
 //       ],
 //     );
 
-// 3.2.1.24 mainAxisSizeにMainAxisSize.min を指定してパッキング
-Widget _buildPackingSample1() => Row(
+//3.2.1.33 ratings all
+class Pavolva extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final stars = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(Icons.star, color: Colors.green[500]),
@@ -128,3 +125,100 @@ Widget _buildPackingSample1() => Row(
         Icon(Icons.star, color: Colors.black)
       ],
     );
+
+    final ratings = Container(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(child: stars),
+            Expanded(
+                child: Text(
+              '170 Reviews',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w800,
+                fontFamily: 'Roboto',
+                letterSpacing: 0.5,
+                fontSize: 20,
+              ),
+            )),
+          ],
+        ));
+
+    final descTextStyle = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w800,
+      fontFamily: 'Roboto',
+      letterSpacing: 18,
+      height: 2,
+    );
+
+    final iconList = DefaultTextStyle.merge(
+        style: descTextStyle,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                  child: Column(
+                children: [
+                  Icon(Icons.kitchen, color: Colors.green[500]),
+                  Text('PREP:'),
+                  Text('25 min'),
+                ],
+              )),
+              Expanded(
+                  child: Column(
+                children: [
+                  Icon(Icons.timer, color: Colors.green[500]),
+                  Text('COOK:'),
+                  Text('1 hr'),
+                ],
+              )),
+              Expanded(
+                  child: Column(
+                children: [
+                  Icon(Icons.restaurant, color: Colors.green[500]),
+                  Text('FEEDS:'),
+                  Text('4-6')
+                ],
+              )),
+            ],
+          ),
+        ));
+
+    final leftColumn = Container(
+      padding: EdgeInsets.fromLTRB(20, 30, 20, 20),
+      child: Column(
+        children: [
+          Text('Strawberry Pavolva'),
+          Text(
+              'Pavolva is meringue-besed dessert named after the Russian ballerina Anna Pavolva.'),
+          ratings,
+          iconList,
+        ],
+      ),
+    );
+
+    final sample = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+            child: Container(
+              width: 440,
+              child: leftColumn,
+            ),
+            flex: 4),
+        Expanded(child: Image.asset('assets/images/image1.png'), flex: 1)
+      ],
+    );
+
+    return Scaffold(
+      body: Center(
+        child: sample,
+      ),
+    );
+  }
+}
