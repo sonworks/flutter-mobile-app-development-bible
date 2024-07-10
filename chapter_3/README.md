@@ -34,9 +34,24 @@ StatefulWidgetは、 `Widget` と `State` ２つのクラスから成り立っ�
 Flutterアプリケーションは自身がウィジェットで、ほとんどのウィジェットは build メソッドを持っている。
 build メソッドでウィジェットをインスタンス化して返すと、ウィジェットが表示される。
 
-### Scaffold
+### Widgets
+
+#### Scaffold
 Material Designのアプリでは一般的に使用されるウィジェット。
 標準のバナーや背景色を提供、また一般的な要素を追加するAPIも提供している。
+
+#### Center
+子Widgetを親Widgetの中心に配置する。
+
+#### MeterialApp
+アプリ全体で共通テーマなどををMaterialデザインに近づける構造のUIを提供する
+
+#### Row / Column
+行、列で子Widgetを配置する
+
+#### Expanded
+行内や列内に収まりきらない子Widgetを収まることができる。
+また、flexプロパティを使って特定要素のサイズを変更することもできる。
 
 ### アセットの準備
 
