@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           body: Center(
-            child: _buildRowImages(),
+            child: _buildPackingSample1(),
           ),
         ),
       );
@@ -107,12 +107,24 @@ class MyApp extends StatelessWidget {
 //       );
 // }
 
-// 3.2.1.1.5 Row
-Widget _buildRowImages() => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+// // 3.2.1.1.5 Row
+// Widget _buildRowImages() => Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//       children: [
+//         Expanded(child: Image.asset('assets/images/image1.png'), flex: 1),
+//         Expanded(child: Image.asset('assets/images/image2.png'), flex: 2),
+//         Expanded(child: Image.asset('assets/images/image3.png'), flex: 1),
+//       ],
+//     );
+
+// 3.2.1.24 mainAxisSizeにMainAxisSize.min を指定してパッキング
+Widget _buildPackingSample1() => Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Expanded(child: Image.asset('assets/images/image1.png'), flex: 1),
-        Expanded(child: Image.asset('assets/images/image2.png'), flex: 2),
-        Expanded(child: Image.asset('assets/images/image3.png'), flex: 1),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.green[500]),
+        Icon(Icons.star, color: Colors.black),
+        Icon(Icons.star, color: Colors.black)
       ],
     );
