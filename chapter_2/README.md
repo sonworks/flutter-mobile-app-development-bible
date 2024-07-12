@@ -77,7 +77,7 @@ Android Studio > Tools > Device Manager からAndroidエミュレーターを作
 
 Xcode > Settings > Platforms からiOSシミュレータを作成しておく。
 
-※ 上項、「### Androidエミュレーターを起動」と手順同様
+※ 上項、「[Androidエミュレーターを起動](https://github.com/sonworks/flutter-mobile-app-development-bible/tree/main/chapter_2#Androidエミュレーターを起動)」と手順同様
 
 ### アプリ実行
 
