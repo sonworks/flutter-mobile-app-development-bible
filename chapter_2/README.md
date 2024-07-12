@@ -67,11 +67,17 @@ Found 2 connected devices:
 
 ### Androidエミュレーターを起動
 
+Android Studio > Tools > Device Manager からAndroidエミュレーターを作成しておく。
+
 1. メニューの View > CommandPalette(⌘⇧P) から `Flutter: Launch Emulator` を選択する
 2. 任意のエミュレーターを起動する、または新規作成する
 
 
-※ 「iOSシミュレーターの起動」方法は省略する
+### iOSシミュレータを起動
+
+Xcode > Settings > Platforms からiOSシミュレータを作成しておく。
+
+※ 上項、「### Androidエミュレーターを起動」と手順同様
 
 ### アプリ実行
 
