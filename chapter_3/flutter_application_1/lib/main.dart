@@ -297,3 +297,27 @@ ListTile _tile(String title, String subtitle, IconData icon) => ListTile(
         color: Colors.blue[500],
       ),
     );
+
+// 3.2.2.6 Stack
+Widget _buildStack() => Stack(
+      alignment: Alignment(0.6, 0.6),
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage('assets/images/image1.jpg'),
+          radius: 100,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.black45,
+          ),
+          child: Text(
+            'Mia B',
+            stye: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ],
+    );
