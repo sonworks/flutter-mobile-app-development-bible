@@ -253,3 +253,16 @@ Widget _buildImageContainer(List<String> images) {
     ),
   );
 }
+
+// 3.2.2.4 GridView
+Widget _buildGrid(List<String> images) => GridView.extent(
+      maxCrossAxisExtent: 150,
+      padding: EdgeInsets.all(4),
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      children: images
+          .map((image) => Container(
+                child: Image.asset(image),
+              ))
+          .toList(),
+    );
