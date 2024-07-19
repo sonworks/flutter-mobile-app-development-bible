@@ -266,3 +266,34 @@ Widget _buildGrid(List<String> images) => GridView.extent(
               ))
           .toList(),
     );
+
+// 3.2.2.5 ListView
+Widget _buildList() => ListView(
+      children: <Widget>[
+        _tile('Theatre1', 'It\'s theatre', Icons.theaters),
+        _tile('Theatre2', 'It\'s theatre', Icons.theaters),
+        _tile('Theatre3', 'It\'s theatre', Icons.theaters),
+        _tile('Theatre4', 'It\'s theatre', Icons.theaters),
+        _tile('Theatre5', 'It\'s theatre', Icons.theaters),
+        _tile('Theatre6', 'It\'s theatre', Icons.theaters),
+        Divider(),
+        _tile('Restaurant1', 'It\'s restaurant', Icons.restaurant),
+        _tile('Restaurant2', 'It\'s restaurant', Icons.restaurant),
+        _tile('Restaurant3', 'It\'s restaurant', Icons.restaurant),
+        _tile('Restaurant4', 'It\'s restaurant', Icons.restaurant),
+        _tile('Restaurant5', 'It\'s restaurant', Icons.restaurant),
+      ],
+    );
+
+ListTile _tile(String title, String subtitle, IconData icon) => ListTile(
+      title: Text(title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          )),
+      subtitle: Text(subtitle),
+      leading: Icon(
+        icon,
+        color: Colors.blue[500],
+      ),
+    );
