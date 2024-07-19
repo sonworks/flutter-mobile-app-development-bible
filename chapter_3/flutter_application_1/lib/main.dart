@@ -321,3 +321,22 @@ Widget _buildStack() => Stack(
         ),
       ],
     );
+
+// 3.2.2.7 Card, ListTile
+Widget _buildCard() => SizedBox(
+      height: 210,
+      child: Card(
+          child: Column(children: <Widget>[
+        _buildListTile('xxxxxxx', Icons.restaurant_menu),
+        _buildListTile('03-1234-5678', Icons.contact_phone),
+        _buildListTile('example@example.com', Icons.contact_mail),
+      ])),
+    );
+
+Widget _buildListTile(String title, IconData icon) => ListTile(
+      title: Text(title, style: const TextStyle(fontWeight: FontWeight.w500)),
+      leading: Icon(
+        icon,
+        color: Colors.blue[500],
+      ),
+    );
