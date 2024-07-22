@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // Flutterウィジェットが使用可能になる
 import 'package:flutter_application_1/FirstScreen.dart';
+import 'package:flutter_application_1/SecondScreen.dart';
 
 // アプリが起動した時に、最初に動作する部分
 void main() => runApp(MyApp());
@@ -10,7 +11,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         title: 'Navigation',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: Firstscreen(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Firstscreen(),
+          '/second': (context) => SecondScreen(),
+        },
       );
 }
 

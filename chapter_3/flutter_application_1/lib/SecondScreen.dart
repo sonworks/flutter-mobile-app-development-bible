@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('The second route')),
+        appBar: AppBar(title: const Text('SecondScreen')),
         body: Center(
           child: ElevatedButton(
               onPressed: () {
