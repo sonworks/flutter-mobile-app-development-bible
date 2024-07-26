@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'; // Flutterウィジェットが使用可能になる
-import 'package:flutter_application_1/FirstScreen.dart';
-import 'package:flutter_application_1/SecondScreen.dart';
+// import 'package:flutter_application_1/FirstScreen.dart';
+// import 'package:flutter_application_1/SecondScreen.dart';
 
 // アプリが起動した時に、最初に動作する部分
 void main() => runApp(MyApp());
@@ -10,14 +10,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Navigation',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => Firstscreen(),
-          '/second': (context) => SecondScreen(),
-        },
+        home: TodoScreen(
+          todos: List<Todo>.generate(
+              20,
+              (i) =>
+                  Todo(title: 'TODO $i', description: 'TODO $i\'s details.')),
+        ),
       );
 }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         title: 'Navigation',
+//         theme: ThemeData(primarySwatch: Colors.blue),
+//         initialRoute: '/',
+//         routes: {
+//           '/': (context) => Firstscreen(),
+//           '/second': (context) => SecondScreen(),
+//         },
+//       );
+// }
 
 // // 3.1.3.5 StatefulWidget Sample
 // class MyApp extends StatefulWidget {
@@ -346,3 +359,57 @@ class MyApp extends StatelessWidget {
 //         color: Colors.blue[500],
 //       ),
 //     );
+
+// 3.3.1.11 Todo list
+class Todo {
+  final String title;
+  final String description;
+
+  Todo({@required this.title, @required this.description})
+      : assert(title != null),
+        assert(description != null);
+}
+
+class TodoScreen extends StatelessWidget {
+  final List<Todo> _todos;
+
+  TodoScreen({Key key, @required List<Todo> todos})
+      : assert(todos != null),
+        this._todos = todos,
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text('TODO list'),
+        ),
+        body: ListView.builder(
+            itemCount: _todos.length,
+            itemBuilder: (context, index) => ListTile(
+                  title: Text(_todos[index].title),
+                  onTap: () {
+                    // Navigation
+                  },
+                )),
+      );
+}
+
+class DetailScreen extends StatelessWidget {
+  final Todo _todo;
+
+  DetailScreen({Key key, @required Todo todo})
+      : assert(todo != null),
+        this._todo = todo,
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(_todo.title),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(_todo.description),
+        ),
+      );
+}
