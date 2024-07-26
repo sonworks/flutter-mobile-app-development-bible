@@ -105,3 +105,17 @@ Flutterでは画面を「ルート(route)」、ルート同士の行き来を「
 
  * Navigator.pushNamed : 名前付きルートに遷移させる
  * Navigator.pop : 前の画面へ遷移させる
+
+#### ウィジェットアニメーションwp伴う遷移
+
+Heroウィジェットを使用することで、アニメーションを伴う画面遷移が可能である。
+
+画面間でアニメーション￥させたいウィジェットを `Hero` ウィジェットでラップして使う。<br>Hero ウィジェットは tag と child が必要。
+* tag: Hero を識別するウィジェット。遷移前後の画面で同じにする必要がある
+* child: 遷移時に画面をまたいでアニメーションさせるウィジェット。
+```dart
+Hero(
+  tag: 'imageHero',
+  child: Image.network('https://picsum.photos/250?image=9')
+);
+```
