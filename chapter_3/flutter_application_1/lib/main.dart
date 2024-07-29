@@ -460,49 +460,119 @@ void main() => runApp(MyApp());
 //       );
 // }
 
-// ３.３.２.３ StatefulWidget #1
+// // ３.３.２.３ StatefulWidget #1
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         title: 'Navigation',
+//         home: Scaffold(
+//           appBar: AppBar(
+//             title: Text('TabBox'),
+//           ),
+//           body: Center(
+//             child: TabBoxA(),
+//           ),
+//         ),
+//       );
+// }
+
+// class TabBoxA extends StatefulWidget {
+//   @override
+//   _TabBoxAState createState() => _TabBoxAState();
+// }
+
+// class _TabBoxAState extends State<TabBoxA> {
+//   bool _active = false;
+
+//   @override
+//   Widget build(BuildContext context) => GestureDetector(
+//       onTap: _handleTap,
+//       child: Container(
+//         child: Center(
+//           child: Text(
+//             _active ? 'Active' : 'Inactive',
+//             style: TextStyle(fontSize: 32.0, color: Colors.white),
+//           ),
+//         ),
+//         width: 200.0,
+//         height: 200.0,
+//         decoration: BoxDecoration(
+//             color: _active ? Colors.lightGreen[700] : Colors.grey[600]),
+//       ));
+
+//   void _handleTap() {
+//     setState(() {
+//       _active = !_active;
+//     });
+//   }
+// }
+
+// ３.３.２.4 StatefulWidget #2
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Navigation',
         home: Scaffold(
           appBar: AppBar(
-            title: Text('TabBox'),
+            title: Text('TabBox #2'),
           ),
           body: Center(
-            child: TabBoxA(),
+            child: ParentWidget(),
           ),
         ),
       );
 }
 
-class TabBoxA extends StatefulWidget {
+class ParentWidget extends StatefulWidget {
   @override
-  _TabBoxAState createState() => _TabBoxAState();
+  _ParentWidgetState createState() => _ParentWidgetState();
 }
 
-class _TabBoxAState extends State<TabBoxA> {
+class _ParentWidgetState extends State<ParentWidget> {
   bool _active = false;
 
   @override
+  Widget build(BuildContext context) => Container(
+        child: TapBoxB(
+          active: _active,
+          onChanged: _handleTapBoxChanged,
+        ),
+      );
+
+  void _handleTapBoxChanged(bool newValue) {
+    setState(() {
+      _active = newValue;
+    });
+  }
+}
+
+class TapBoxB extends StatelessWidget {
+  TapBoxB({Key? key, this.active = false, required this.onChanged})
+      : assert(true), // actual is 'active != false'
+        assert(onChanged != null),
+        super(key: key);
+  final bool active;
+  final ValueChanged<bool> onChanged;
+
+  @override
   Widget build(BuildContext context) => GestureDetector(
-      onTap: _handleTap,
-      child: Container(
-        child: Center(
-          child: Text(
-            _active ? 'Active' : 'Inactive',
-            style: TextStyle(fontSize: 32.0, color: Colors.white),
+        onTap: _handleTap,
+        child: Container(
+          child: Center(
+            child: Text(
+              active ? 'Active1' : 'Inactive1',
+              style: TextStyle(fontSize: 32.0, color: Colors.white),
+            ),
+          ),
+          width: 200.0,
+          height: 200.0,
+          decoration: BoxDecoration(
+            color: active ? Colors.lightGreen[700] : Colors.grey[600],
           ),
         ),
-        width: 200.0,
-        height: 200.0,
-        decoration: BoxDecoration(
-            color: _active ? Colors.lightGreen[700] : Colors.grey[600]),
-      ));
+      );
 
   void _handleTap() {
-    setState(() {
-      _active = !_active;
-    });
+    onChanged(!active);
   }
 }
