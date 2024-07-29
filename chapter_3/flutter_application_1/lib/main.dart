@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; // Flutterウィジェットが使用可能になる
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart'; // Flutterウィジェットが使用可能になる
 // import 'package:flutter_application_1/FirstScreen.dart';
 // import 'package:flutter_application_1/SecondScreen.dart';
 
@@ -414,47 +415,94 @@ void main() => runApp(MyApp());
 //       );
 // }
 
-// 3.3.1.21 base widget
+// // 3.3.1.21 base widget
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         title: 'Navigation',
+//         home: MainScreen(),
+//       );
+// }
+
+// class MainScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => Scaffold(
+//         appBar: AppBar(
+//           title: Text("Main Screen"),
+//         ),
+//         body: GestureDetector(
+//           onTap: () {
+//             Navigator.push(
+//                 context, MaterialPageRoute(builder: (_) => DetailScreen()));
+//           },
+//           child: Hero(
+//             tag: 'imageHero',
+//             child: Image.network('https://picsum.photos/250?image=9'),
+//           ),
+//         ),
+//       );
+// }
+
+// class DetailScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => Scaffold(
+//         body: GestureDetector(
+//           onTap: () {
+//             Navigator.pop(context);
+//           },
+//           child: Center(
+//             child: Hero(
+//               tag: 'imageHero',
+//               child: Image.network('https://picsum.photos/250?image=9'),
+//             ),
+//           ),
+//         ),
+//       );
+// }
+
+// ３.３.２.３ StatefulWidget #1
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Navigation',
-        home: MainScreen(),
-      );
-}
-
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text("Main Screen"),
-        ),
-        body: GestureDetector(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => DetailScreen()));
-          },
-          child: Hero(
-            tag: 'imageHero',
-            child: Image.network('https://picsum.photos/250?image=9'),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('TabBox'),
+          ),
+          body: Center(
+            child: TabBoxA(),
           ),
         ),
       );
 }
 
-class DetailScreen extends StatelessWidget {
+class TabBoxA extends StatefulWidget {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Center(
-            child: Hero(
-              tag: 'imageHero',
-              child: Image.network('https://picsum.photos/250?image=9'),
-            ),
+  _TabBoxAState createState() => _TabBoxAState();
+}
+
+class _TabBoxAState extends State<TabBoxA> {
+  bool _active = false;
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+      onTap: _handleTap,
+      child: Container(
+        child: Center(
+          child: Text(
+            _active ? 'Active' : 'Inactive',
+            style: TextStyle(fontSize: 32.0, color: Colors.white),
           ),
         ),
-      );
+        width: 200.0,
+        height: 200.0,
+        decoration: BoxDecoration(
+            color: _active ? Colors.lightGreen[700] : Colors.grey[600]),
+      ));
+
+  void _handleTap() {
+    setState(() {
+      _active = !_active;
+    });
+  }
 }
