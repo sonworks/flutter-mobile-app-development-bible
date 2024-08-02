@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart'; // ファイルの一番上に追加
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart'; // Flutterウィジェットが使用可能になる
 // import 'package:flutter_application_1/FirstScreen.dart';
@@ -578,6 +579,7 @@ void main() => runApp(MyApp());
 // }
 
 // 3.4.3.1 Flutterロゴを表示するアニメーション
+// 3.4.3.2 徐々にロゴが大きくなるアニメーション
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -590,14 +592,36 @@ class LogoApp extends StatefulWidget {
   _LogoAppState createState() => _LogoAppState();
 }
 
-class _LogoAppState extends State<LogoApp> {
+class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller =
+        AnimationController(duration: Duration(seconds: 2), vsync: this)
+          ..addListener(() {
+            // animationの値が変更されたことをウィジェットに通知するため設置する
+            setState(() {});
+          });
+    ;
+    animation = Tween<double>(begin: 0, end: 300).animate(controller);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: Center(
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 10),
-            height: 300,
-            width: 300,
+            height: animation.value,
+            width: animation.value,
             child: FlutterLogo(),
           ),
         ),
