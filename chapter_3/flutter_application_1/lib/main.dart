@@ -507,72 +507,99 @@ void main() => runApp(MyApp());
 //   }
 // }
 
-// ３.３.２.4 StatefulWidget #2
+// // ３.３.２.4 StatefulWidget #2
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         title: 'Navigation',
+//         home: Scaffold(
+//           appBar: AppBar(
+//             title: Text('TabBox #2'),
+//           ),
+//           body: Center(
+//             child: ParentWidget(),
+//           ),
+//         ),
+//       );
+// }
+
+// class ParentWidget extends StatefulWidget {
+//   @override
+//   _ParentWidgetState createState() => _ParentWidgetState();
+// }
+
+// class _ParentWidgetState extends State<ParentWidget> {
+//   bool _active = false;
+
+//   @override
+//   Widget build(BuildContext context) => Container(
+//         child: TapBoxB(
+//           active: _active,
+//           onChanged: _handleTapBoxChanged,
+//         ),
+//       );
+
+//   void _handleTapBoxChanged(bool newValue) {
+//     setState(() {
+//       _active = newValue;
+//     });
+//   }
+// }
+
+// class TapBoxB extends StatelessWidget {
+//   TapBoxB({Key? key, this.active = false, required this.onChanged})
+//       : assert(true), // actual is 'active != false'
+//         assert(onChanged != null),
+//         super(key: key);
+//   final bool active;
+//   final ValueChanged<bool> onChanged;
+
+//   @override
+//   Widget build(BuildContext context) => GestureDetector(
+//         onTap: _handleTap,
+//         child: Container(
+//           child: Center(
+//             child: Text(
+//               active ? 'Active1' : 'Inactive1',
+//               style: TextStyle(fontSize: 32.0, color: Colors.white),
+//             ),
+//           ),
+//           width: 200.0,
+//           height: 200.0,
+//           decoration: BoxDecoration(
+//             color: active ? Colors.lightGreen[700] : Colors.grey[600],
+//           ),
+//         ),
+//       );
+
+//   void _handleTap() {
+//     onChanged(!active);
+//   }
+// }
+
+// 3.4.3.1 Flutterロゴを表示するアニメーション
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Navigation',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('TabBox #2'),
-          ),
-          body: Center(
-            child: ParentWidget(),
-          ),
-        ),
+        home: LogoApp(),
       );
 }
 
-class ParentWidget extends StatefulWidget {
+class LogoApp extends StatefulWidget {
   @override
-  _ParentWidgetState createState() => _ParentWidgetState();
+  _LogoAppState createState() => _LogoAppState();
 }
 
-class _ParentWidgetState extends State<ParentWidget> {
-  bool _active = false;
-
+class _LogoAppState extends State<LogoApp> {
   @override
-  Widget build(BuildContext context) => Container(
-        child: TapBoxB(
-          active: _active,
-          onChanged: _handleTapBoxChanged,
-        ),
-      );
-
-  void _handleTapBoxChanged(bool newValue) {
-    setState(() {
-      _active = newValue;
-    });
-  }
-}
-
-class TapBoxB extends StatelessWidget {
-  TapBoxB({Key? key, this.active = false, required this.onChanged})
-      : assert(true), // actual is 'active != false'
-        assert(onChanged != null),
-        super(key: key);
-  final bool active;
-  final ValueChanged<bool> onChanged;
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: _handleTap,
-        child: Container(
-          child: Center(
-            child: Text(
-              active ? 'Active1' : 'Inactive1',
-              style: TextStyle(fontSize: 32.0, color: Colors.white),
-            ),
-          ),
-          width: 200.0,
-          height: 200.0,
-          decoration: BoxDecoration(
-            color: active ? Colors.lightGreen[700] : Colors.grey[600],
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+            height: 300,
+            width: 300,
+            child: FlutterLogo(),
           ),
         ),
       );
-
-  void _handleTap() {
-    onChanged(!active);
-  }
 }
