@@ -176,3 +176,9 @@ flutter:
   - AnimationControllerとは異なる範囲の数値や、数値以外のデータ型の値が必要な場合に使用
 * Listener, StatusListener
   - アニメーションの変化による状態通知用リスナー
+
+#### アニメーションの描画
+
+* AnimatedWidget
+  - Animationオブジェクトの状態変化を監視し、ウィジェットの再描画を自動的に実行
+    - 明示的に setState を呼び出すコードは不要になり、より簡潔なコードの実装が可能
