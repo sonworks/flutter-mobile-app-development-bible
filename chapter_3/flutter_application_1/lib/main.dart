@@ -581,6 +581,7 @@ void main() => runApp(MyApp());
 // 3.4.3.1 Flutterロゴを表示するアニメーション
 // 3.4.3.2 徐々にロゴが大きくなるアニメーション
 // 3.4.3.3 AnimatedWidgetを使用した実装
+// 3.4.3.4 AnimationBuilderを使用した実装
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -613,25 +614,61 @@ class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) => AnimatedLogo(animation: animation);
+  Widget build(BuildContext context) => GrowTransition(
+        animation: animation,
+        child: LogoWidget(),
+      );
 }
 
-class AnimatedLogo extends AnimatedWidget {
-  AnimatedLogo({Key: key, Animation<double> animation})
-      : super(key: key, listenable: animation);
+// class AnimatedLogo extends AnimatedWidget {
+//   AnimatedLogo({Key: key, Animation<double> animation})
+//       : super(key: key, listenable: animation);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final Animation<double> animation = listenable;
+//     return Scaffold(
+//       body: Center(
+//         child: Container(
+//           margin: EdgeInsets.symmetric(vertical: 10),
+//           height: animation.value,
+//           width: animation.value,
+//           child: FlutterLogo(),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class GrowTransition extends StatelessWidget {
+  GrowTransition({Key key, this.child, this.animation})
+      : assert(child != null),
+        assert(animation != null),
+        super(key: key);
+
+  final Widget child;
+  final Animation<double> animation;
 
   @override
-  Widget build(BuildContext context) {
-    final Animation<double> animation = listenable;
-    return Scaffold(
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          height: animation.value,
-          width: animation.value,
-          child: FlutterLogo(),
+  Widget build(BuildContext context) => Scaffold(
+        body: Center(
+          child: AnimatedBuilder(
+            animation: animation,
+            child: child,
+            builder: (context, child) => Container(
+              height: animation.value,
+              width: animation.value,
+              child: child,
+            ),
+          ),
         ),
-      ),
-    );
-  }
+      );
+}
+
+class LogoWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        child: FlutterLogo(),
+      );
 }

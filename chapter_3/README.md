@@ -182,3 +182,6 @@ flutter:
 * AnimatedWidget
   - Animationオブジェクトの状態変化を監視し、ウィジェットの再描画を自動的に実行
     - 明示的に setState を呼び出すコードは不要になり、より簡潔なコードの実装が可能
+* AnimationBuilder
+  - アニメーション描画と、画像描画の分離を助けるツール
+  - AnimatedWidgetと同様、Animationオブジェクトの変更を監視して自動的に再描画処理を実行
