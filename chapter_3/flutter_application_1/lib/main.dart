@@ -1,11 +1,13 @@
 import 'package:flutter/animation.dart'; // ファイルの一番上に追加
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart'; // Flutterウィジェットが使用可能になる
 // import 'package:flutter_application_1/FirstScreen.dart';
 // import 'package:flutter_application_1/SecondScreen.dart';
 
 // アプリが起動した時に、最初に動作する部分
-void main() => runApp(MyApp());
+void main() => runApp(MyWidget());
 
 // StatelessWidget Sample
 // class MyApp extends StatelessWidget {
@@ -578,97 +580,239 @@ void main() => runApp(MyApp());
 //   }
 // }
 
-// 3.4.3.1 Flutterロゴを表示するアニメーション
-// 3.4.3.2 徐々にロゴが大きくなるアニメーション
-// 3.4.3.3 AnimatedWidgetを使用した実装
-// 3.4.3.4 AnimationBuilderを使用した実装
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: LogoApp(),
-      );
-}
-
-class LogoApp extends StatefulWidget {
-  @override
-  _LogoAppState createState() => _LogoAppState();
-}
-
-class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<double> animation;
-
-  @override
-  void initState() {
-    super.initState();
-    controller =
-        AnimationController(duration: Duration(seconds: 2), vsync: this);
-    animation = Tween<double>(begin: 0, end: 300).animate(controller);
-    controller.forward();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) => GrowTransition(
-        animation: animation,
-        child: LogoWidget(),
-      );
-}
-
-// class AnimatedLogo extends AnimatedWidget {
-//   AnimatedLogo({Key: key, Animation<double> animation})
-//       : super(key: key, listenable: animation);
-
+// // 3.4.3.1 Flutterロゴを表示するアニメーション
+// // 3.4.3.2 徐々にロゴが大きくなるアニメーション
+// // 3.4.3.3 AnimatedWidgetを使用した実装
+// // 3.4.3.4 AnimationBuilderを使用した実装
+// class MyApp extends StatelessWidget {
 //   @override
-//   Widget build(BuildContext context) {
-//     final Animation<double> animation = listenable;
-//     return Scaffold(
-//       body: Center(
-//         child: Container(
-//           margin: EdgeInsets.symmetric(vertical: 10),
-//           height: animation.value,
-//           width: animation.value,
-//           child: FlutterLogo(),
-//         ),
-//       ),
-//     );
-//   }
+//   Widget build(BuildContext context) => MaterialApp(
+//         home: LogoApp(),
+//       );
 // }
 
-class GrowTransition extends StatelessWidget {
-  GrowTransition({Key key, this.child, this.animation})
-      : assert(child != null),
-        assert(animation != null),
-        super(key: key);
+// class LogoApp extends StatefulWidget {
+//   @override
+//   _LogoAppState createState() => _LogoAppState();
+// }
 
-  final Widget child;
-  final Animation<double> animation;
+// class _LogoAppState extends State<LogoApp> with SingleTickerProviderStateMixin {
+//   late AnimationController controller;
+//   late Animation<double> animation;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     controller =
+//         AnimationController(duration: Duration(seconds: 2), vsync: this);
+//     animation = Tween<double>(begin: 0, end: 300).animate(controller);
+//     controller.forward();
+//   }
+
+//   @override
+//   void dispose() {
+//     controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) => GrowTransition(
+//         animation: animation,
+//         child: LogoWidget(),
+//       );
+// }
+
+// // class AnimatedLogo extends AnimatedWidget {
+// //   AnimatedLogo({Key: key, Animation<double> animation})
+// //       : super(key: key, listenable: animation);
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     final Animation<double> animation = listenable;
+// //     return Scaffold(
+// //       body: Center(
+// //         child: Container(
+// //           margin: EdgeInsets.symmetric(vertical: 10),
+// //           height: animation.value,
+// //           width: animation.value,
+// //           child: FlutterLogo(),
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
+
+// class GrowTransition extends StatelessWidget {
+//   GrowTransition({Key key, this.child, this.animation})
+//       : assert(child != null),
+//         assert(animation != null),
+//         super(key: key);
+
+//   final Widget child;
+//   final Animation<double> animation;
+
+//   @override
+//   Widget build(BuildContext context) => Scaffold(
+//         body: Center(
+//           child: AnimatedBuilder(
+//             animation: animation,
+//             child: child,
+//             builder: (context, child) => Container(
+//               height: animation.value,
+//               width: animation.value,
+//               child: child,
+//             ),
+//           ),
+//         ),
+//       );
+// }
+
+// class LogoWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => Container(
+//         margin: EdgeInsets.symmetric(vertical: 10),
+//         child: FlutterLogo(),
+//       );
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//         home: LogoApp(),
+//       );
+// }
+
+// 3.5 ウィジェットの応用
+// 3.5.1.4 ~ 3.5.1.10
+class MyWidget extends StatefulWidget {
+  final String title;
+  MyWidget({Key key, this.title}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: AnimatedBuilder(
-            animation: animation,
-            child: child,
-            builder: (context, child) => Container(
-              height: animation.value,
-              width: animation.value,
-              child: child,
-            ),
-          ),
-        ),
-      );
+  _MyWidgetState createState() => _MyWidgetState();
 }
 
-class LogoWidget extends StatelessWidget {
+class ImportantData {
+  int count = 0;
+
+  increment() {
+    this.count++;
+  }
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  ImportantData importantData = ImportantData();
+
+  _doImportantThings() {
+    setState(() {
+      importantData.increment();
+    });
+  }
+
   @override
-  Widget build(BuildContext context) => Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: FlutterLogo(),
-      );
+  Widget build(BuildContext context) {
+    debugPrint("MyWidget is built");
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Text("MyWidget"),
+            AnotherWidget(importantData: importantData)
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _doImportantThings,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class AnotherWidget extends StatefulWidget {
+  final ImportantData importantData;
+
+  AnotherWidget({Key key, @required this.importantData})
+      : assert(importantData != null),
+        super(key: key);
+
+  @override
+  _AnotherWidgetState createState() => _AnotherWidgetState();
+}
+
+class _AnotherWidgetState extends State<AnotherWidget> {
+  ImportantData get _importantData => widget.importantData;
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("AnotherWidget is built");
+    return Container(
+      height: 400,
+      decoration: BoxDecoration(color: Colors.cyan),
+      child: Column(children: <Widget>[
+        Text('"AnotherWidget'),
+        YetAnotherWidget(importantData: _importantData)
+      ]),
+    );
+  }
+}
+
+class YetAnotherWidget extends StatefulWidget {
+  final ImportantData importantData;
+
+  YetAnotherWidget({Key key, @required this.importantData})
+      : assert(importantData != null),
+        super(key: key);
+
+  @override
+  _YetAnotherWidgetState createState() => _YetAnotherWidgetState();
+}
+
+class _YetAnotherWidgetState extends State<YetAnotherWidget> {
+  ImportantData get _importantData => widget.importantData;
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("YetAnotherWidget is built");
+    return Container(
+      height: 300,
+      decoration: BoxDecoration(color: Colors.amber),
+      child: Column(children: <Widget>[
+        Text('"YetAnotherWidget'),
+        ThisIsJustRidiculousWidget(importantData: _importantData)
+      ]),
+    );
+  }
+}
+
+class ThisIsJustRidiculousWidget extends StatefulWidget {
+  final ImportantData importantData;
+
+  ThisIsJustRidiculousWidget({Key key, @required this.importantData})
+      : assert(importantData != null),
+        super(key: key);
+
+  @override
+  _ThisIsJustRidiculousWidgetState createState() =>
+      _ThisIsJustRidiculousWidgetState();
+}
+
+class _ThisIsJustRidiculousWidgetState
+    extends State<ThisIsJustRidiculousWidget> {
+  ImportantData get _importantData => widget.importantData;
+
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("ThisIsJustRidiculousWidget is built");
+    return Container(
+      height: 200,
+      decoration: BoxDecoration(color: Colors.deepPurpleAccent),
+      child: Column(children: <Widget>[
+        Text('"ThisIsJustRidiculousWidget'),
+        Text('"importantData is ${_importantData.count}'),
+      ]),
+    );
+  }
 }
