@@ -21,3 +21,27 @@
  * Pluginパッケージ
    - Dart言語のみならず、各 Platform (iOS/Android) 固有の実装を含むライブラリを指す
    - 外部へのシェア機能を提供するパッケージ、Share Extension/Action、など
+
+#### Dartパッケージ
+
+##### Step1 Dartパッケージの生成
+```
+$ flutter create --template=package {パッケージ名}
+```
+パッケージを生成する際は、 `flutter create` コマンドに `--template=package` のオプションを付ける必要がある。
+上記のコマンドを実行するとプロジェクトに２つのクラスが生成される。
+
+1. lib/{パッケージ名}.dart : 外部に公開する実装を記述するクラス(dartのみの記述となる)
+2. test/{パッケージ名}.dart : Unitテストを記述するクラス
+
+##### Step2 Dartパッケージの実装
+`lib/{パッケージ名}.dart` に必要な実装を追加する。
+また、実装の際は複数ファイルを利用することになるため、libディレクトリ内にファイルを配置しておく必要がある。
+
+パッケージは `pubspec.yaml` にてバージョンが管理される。例えば、helloパッケージを作成する場合は、下記の通り、記述する
+```yaml
+dependencies
+  hello: ^0.12.0+2
+```
+
+利用するプロジェクト側では pubspec.yaml に依存性を記述して、 `flutter pub get` コマンドを実行することで、 lib/{パッケージに記述したクラス名}.dart へのアクセスが可能になる。
