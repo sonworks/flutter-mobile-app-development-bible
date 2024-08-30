@@ -45,3 +45,28 @@ dependencies
 ```
 
 利用するプロジェクト側では pubspec.yaml に依存性を記述して、 `flutter pub get` コマンドを実行することで、 lib/{パッケージに記述したクラス名}.dart へのアクセスが可能になる。
+
+#### Pluginパッケージ
+
+Pluginパッケージの前に、Platform Channelの概要を知っておく。
+
+>Flutterは、iOS/Android上で利用されるプラットフォーム固有のAPIに対応するため、Platform Channelと呼ばれる柔軟なシステムを持っている。Platform Channelはコード生成ではなく、メッセージパッシングによるモデルを利用している。<br>
+Flutter側で何らかの機能が呼び出されると、Platform Channelを介してホストに対してメッセージを送信することとなる。<br>
+一方、ホスト側はPlatform Channelにメッセージが届いてないかを監視したり、メッセージが届けば受けつったりする。<br>
+つまり、Flutterと各プラットフォーム(iOS/Android)は、Platform Channel上でバイナリーデータをやり取りする。
+
+##### Step1 Pluginパッケージの生成
+```
+# Java (Android), Objective-C (iOS) を利用する場合
+$ flutter create --org com.example --template=plugin {パッケージ名}
+
+# Kotlin (Android), Swift (iOS) を利用する場合
+$ flutter create --org com.example --template=plugin -i swift -a kotlin {パッケージ名}
+```
+Pluginパッケージを生成する際は、 `--template=plugin` オプションと、ドメイン `com.example.company(仮)` を付与する必要がある。
+
+例えば、 hello パッケージを生成すると、helloディレクトリに複数のファイルが生成される。
+1. lib/hello.dart : Dartパッケージと同じく、外部に公開するクラス
+2. android/src/main/java/com/example/hello/HelloPlugin.java : Android固有の実装を記述するクラス
+3. ios/Classes/HelloPlugin.m : iOS固有の実装を記述するクラス
+4. example/ : hello.dartで公開するFlutterのサンプルアプリケーションを記述するプロジェクトの領域
