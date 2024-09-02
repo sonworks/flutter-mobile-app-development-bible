@@ -70,3 +70,14 @@ Pluginパッケージを生成する際は、 `--template=plugin` オプショ�
 2. android/src/main/java/com/example/hello/HelloPlugin.java : Android固有の実装を記述するクラス
 3. ios/Classes/HelloPlugin.m : iOS固有の実装を記述するクラス
 4. example/ : hello.dartで公開するFlutterのサンプルアプリケーションを記述するプロジェクトの領域
+
+##### Step2 Pluginパッケージの実装
+
+Android Studio または Xcode で参照機能を利用するためには、下記コマンド例の通り、Flutterアプリを少なくとも一度はビルドしておく必要がある。
+```
+# Android
+$ cd {パッケージ名}/example; flutter build apk
+
+# iOS
+$ cd {パッケージ名}/example; flutter build ios --no-codesign
+```
