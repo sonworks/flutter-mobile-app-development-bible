@@ -81,3 +81,9 @@ $ cd {パッケージ名}/example; flutter build apk
 # iOS
 $ cd {パッケージ名}/example; flutter build ios --no-codesign
 ```
+
+## パッケージの公開
+
+パッケージを公開するには、パッケージを利用する開発者が、提供されているAPIの利用を簡易にするため、必ずAPIドキュメントを用意する必要がある。
+
+APIドキュメントは、自動生成され [pub.dev](https://pub.dev/) に公開される。
