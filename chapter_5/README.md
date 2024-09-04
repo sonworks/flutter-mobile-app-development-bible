@@ -87,3 +87,18 @@ $ cd {パッケージ名}/example; flutter build ios --no-codesign
 パッケージを公開するには、パッケージを利用する開発者が、提供されているAPIの利用を簡易にするため、必ずAPIドキュメントを用意する必要がある。
 
 APIドキュメントは、自動生成され [pub.dev](https://pub.dev/) に公開される。
+
+### APIドキュメントの作成 (for macOS)
+実際にパッケージを公開する場合、開発環境でAPIドキュメントを確認する必要がある。
+```cmd
+# 1. パッケージのディレクトリに移動
+$ cd ~/dev/{mypackage}
+
+# 2. Flutter SDKの場所をドキュメンテーションツールに教える
+$ export FLUTTER_ROOT=~/development/flutter
+
+# 3. dartdocを実行する
+$ FLUTTER_ROOT/bin/chche/dart-sdk/bin/dartdoc
+
+# 4. ライセンスを追記
+```
