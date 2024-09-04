@@ -8,10 +8,10 @@
 </table>
 
 ## CONTENTS
-* Chapter 1 Flutterとは
-* Chapter 2 開発環境の構築
-* Chapter 3 ウィジェット
-* Chapter 4 状態管理
-* Chapter 5 ライブラリの実装
-* Chapter 6 サンプルアプリの実装
-* Chapter 7 開発の継続
+* [x] Chapter 1 Flutterとは
+* [x] Chapter 2 開発環境の構築
+* [x] Chapter 3 ウィジェット
+* [x] Chapter 4 状態管理
+* [x] Chapter 5 ライブラリの実装
+* [ ] Chapter 6 サンプルアプリの実装
+* [ ] Chapter 7 開発の継続
