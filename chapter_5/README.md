@@ -102,3 +102,21 @@ $ FLUTTER_ROOT/bin/chche/dart-sdk/bin/dartdoc
 
 # 4. ライセンスを追記
 ```
+
+### パッケージの公開 (for macOS)
+
+>公開前は `pubspec.yaml` . `README.md` , `CHANGELOG.md` の内容に誤りがないか最終チェックをる。
+
+```cmd
+# 1. --dry-run オプション付きで実行 (--dry-run: 公開するために必要な要件を教えてくれる)
+$ flutter pub publish --dry-run
+
+# 2. パッケージ公開の実行
+$ flutter pub publish
+```
+
+公開されたパッケージは、以下例のように `pubspec.yaml` に利用するパッケージの依存性を記述して使う。
+```yaml
+dependencied:
+  url_launcher: ^0.4.2
+```
