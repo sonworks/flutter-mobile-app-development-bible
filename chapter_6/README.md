@@ -1,6 +1,6 @@
 # Chapter 6 - サンプルアプリの実装
 
-※ 公式サンプルアプリ: [AwaseFlutter/Sample](https://github.com/AwaseFlutter/Sample)
+※ 公式サンプルアプリ: <a href="https://github.com/AwaseFlutter/Sample" target="_blank">AwaseFlutter/Sample</a>
 
 ## 要件定義
 
