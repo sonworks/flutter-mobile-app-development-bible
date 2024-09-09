@@ -1,5 +1,7 @@
 # Chapter 6 - サンプルアプリの実装
 
+※ 公式サンプルアプリ: [AwaseFlutter/Sample](https://github.com/AwaseFlutter/Sample)
+
 ## 要件定義
 
 * 目的を決める
