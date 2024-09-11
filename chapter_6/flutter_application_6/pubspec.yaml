@@ -40,6 +40,10 @@ dependencies:
   # https://pub.dev/packages/meta/
   meta: ^1.15.0
 
+  # equatable
+  # https://pub.dev/packages/equatable
+  equatable: ^2.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
