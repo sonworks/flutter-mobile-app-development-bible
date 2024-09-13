@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_application_6/models/event.dart';
 
 abstract class EventListState extends Equatable {
-  EventListState([List props = const []]) : super(); // super(props)
+  EventListState([List props = const []]) : super(); // FIXME: super(props)
 }
 
 class EventListEmpty extends EventListState {
