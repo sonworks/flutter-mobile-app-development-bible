@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class EventListBloc extends Bloc<EventListEvent, EventListState> {
   final EventListRepository _eventListRepository;
 
-  EventListBloc({required EventListRepository eventListRepository})
+  EventListBloc(super.initialState,
+      {required EventListRepository eventListRepository})
       : _eventListRepository = eventListRepository;
 
   @override
