@@ -36,3 +36,36 @@ $ flutter pub global run devtools
  * Release: アプリケーションをリリースしたい時
  * Profile: アプリのパフォーマンスを最適化するための最低限のデバッグ機能を利用したい時
    - Profileモードでの実行は `$ flutter run --profile` コマンドで実行する
+
+### テスト
+
+#### Unitテスト
+単一のファンクションやメソッド、クラスに対するテスト
+
+```yaml
+# testパッケージの追加 (pubspec.yaml)
+dev_dependencies:
+  test: 3.5.1 # 2024/9/30現在の最新
+  flutter_test:
+    sdk: flutter
+```
+
+#### ウィジェットテスト
+UIコンポーネントであるウィジェットに対するテスト
+
+```yaml
+# pubspec.yaml に依存性の記述は、標準で追加されているので実際に記述する必要はない
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+```
+
+#### Integrationテスト
+UIコンポーネントだけではなく、サービスの挙動も含めて検証するテスト
+
+```yaml
+# 同上、標準で追加されているので実際に pubspec.yaml に記述する必要はない
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+```
