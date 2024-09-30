@@ -69,3 +69,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 ```
+
+### CI/CD
+
+継続的インテグレーション(Continuous Integration)と継続的デリバリー(Continuous Delivery)をサービスサービスは `CodeMagic` や `Bitrise` などが利用できる。
