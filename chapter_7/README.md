@@ -30,3 +30,9 @@ $ flutter pub global run devtools
  * Debugger: アプリケーションのデバッグ機能を提供
  * Logging: アプリ内で発生したログイベントを時系列で確認可能
 
+### Flutterにおけるビルド種類
+
+ * Debug: 開発でHot Reloadを利用したい時
+ * Release: アプリケーションをリリースしたい時
+ * Profile: アプリのパフォーマンスを最適化するための最低限のデバッグ機能を利用したい時
+   - Profileモードでの実行は `$ flutter run --profile` コマンドで実行する
