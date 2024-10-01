@@ -73,3 +73,18 @@ dev_dependencies:
 ### CI/CD
 
 継続的インテグレーション(Continuous Integration)と継続的デリバリー(Continuous Delivery)をサービスサービスは `CodeMagic` や `Bitrise` などが利用できる。
+
+## デプロイメント
+
+
+#### 難読化
+
+Flutterの標準状態では、難読化は無効にされている。
+
+ * iOS: `xcode_backend.sh` を編集
+ * Android: `proguard-rules.pro` を編集
+
+#### アプリケーションの公開
+
+ * iOS: App Store Connect 経由で App Store に公開する
+ * Android: Google Play Developer Console を利用して Google Play Store に公開する
