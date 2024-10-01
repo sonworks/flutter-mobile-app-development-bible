@@ -88,3 +88,4 @@ Flutterの標準状態では、難読化は無効にされている。
 
  * iOS: App Store Connect 経由で App Store に公開する
  * Android: Google Play Developer Console を利用して Google Play Store に公開する
+ 
