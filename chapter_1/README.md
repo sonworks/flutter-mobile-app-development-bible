@@ -36,5 +36,8 @@ Flutterは、オープンソースとしてGoogleが開発しているモバイ�
 * Flutter
   - Googleが開発、開発言語はDart。
 
-## リンク
- * [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview)
+## Architectural layers ( Flutter architectural overview )
+
+![Flutter architectural layers](https://docs.flutter.dev/assets/images/docs/arch-overview/archdiagram.png)
+
+ * [Flutter architectural layers](https://docs.flutter.dev/resources/architectural-overview#architectural-layers)
